@@ -5,14 +5,20 @@ function LandingPage() {
     <div className="bg-slate-900 min-h-screen text-white font-sans">
       {/* Header */}
       <header className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Chronolith AI</h1>
+        <div className="flex items-center gap-3">
+          <img src="/logo.jpg" alt="Chronolith AI logo" className="h-10 w-10 rounded-lg object-cover border border-slate-800" />
+          <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Chronolith AI</h1>
+        </div>
         <Link to="/login" className="bg-slate-700 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded-full transition duration-300">
           Sign In
         </Link>
       </header>
 
       {/* Hero Section */}
-      <main className="container mx-auto px-6 text-center py-20 md:py-28">
+      <main className="container mx-auto px-6 text-center py-16 md:py-24">
+        <div className="flex justify-center mb-8">
+          <img src="/logo.jpg" alt="Chronolith AI Logo" className="w-48 h-48 rounded-2xl shadow-2xl border border-slate-800 hover:scale-105 transition duration-500" />
+        </div>
         <h2 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
           One AI. Every Goal. <span className="text-cyan-400">On Time.</span>
         </h2>

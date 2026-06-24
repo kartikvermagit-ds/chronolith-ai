@@ -14,3 +14,7 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     email: EmailStr | None = None
+
+class GoalCreate(BaseModel):
+    title: str
+    target_date: str

@@ -25,7 +25,10 @@ const SignupPage = () => {
   return (
     <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center">
       <div className="bg-slate-800 p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center mb-6 text-cyan-400">Create Account</h2>
+        <div className="flex flex-col items-center mb-6">
+          <img src="/logo.jpg" alt="Chronolith AI Logo" className="w-20 h-20 rounded-xl shadow-lg border border-slate-750 mb-4" />
+          <h2 className="text-3xl font-bold text-center text-cyan-400">Create Account</h2>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-slate-400 mb-2" htmlFor="email">Email</label>
