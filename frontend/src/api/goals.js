@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000';
+const API_URL = 'http://127.0.0.1:8000';
 
 const getHeaders = () => {
   const token = localStorage.getItem('token');
@@ -64,3 +64,49 @@ export const rescheduleGoal = async (goalId) => {
 
   return response.json();
 };
+
+export const askAssistant = async (message) => {
+  const response = await fetch(`${API_URL}/assistant`, {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify({ message }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.detail || 'Failed to communicate with assistant');
+  }
+
+  return response.json();
+};
+
+export const fetchFutureSelf = async (goalId) => {
+  const response = await fetch(`${API_URL}/goals/${goalId}/future-self`, {
+    method: 'POST',
+    headers: getHeaders(),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.detail || 'Failed to fetch future self projection');
+  }
+
+  return response.json();
+};
+
+export const smartInterruption = async (goalId, eventText) => {
+  const response = await fetch(`${API_URL}/goals/${goalId}/smart-interruption`, {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify({ event_text: eventText }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.detail || 'Failed to report smart interruption');
+  }
+
+  return response.json();
+};
+
+

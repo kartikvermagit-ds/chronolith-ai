@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "email": "test@chronolith.ai",
+      "hashed_password": "$2b$12$P2jwFlV5D6DjhlPntGvV.OhtYkOzX2HqlwTLEpVpfesZWWqR5M1pS",
+      "id": 1782362227382
+    },
+    {
+      "email": "test123@gmail.com",
+      "hashed_password": "$2b$12$7MRwSiopbkbiGCHnCrth8.GT2FVHrON64M/6WYR7BkOfg65kbaNZG",
+      "id": 1782362270843
+    }
+  ],
+  "goals": [],
+  "tasks": []
+}

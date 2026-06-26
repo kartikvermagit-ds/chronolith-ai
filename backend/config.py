@@ -13,5 +13,6 @@ class Settings:
     ALGORITHM: str = os.getenv("ALGORITHM")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY")
+    USE_LOCAL_DB: bool = os.getenv("USE_LOCAL_DB", "False").lower() in ("true", "1", "t")
 
 settings = Settings()

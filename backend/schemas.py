@@ -18,3 +18,6 @@ class TokenData(BaseModel):
 class GoalCreate(BaseModel):
     title: str
     target_date: str
+
+class ChatMessage(BaseModel):
+    message: str

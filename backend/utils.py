@@ -1,16 +1,18 @@
-from passlib.context import CryptContext
+import bcrypt
 from datetime import datetime, timedelta, timezone
 from jose import JWTError, jwt
 from config import settings
 
-# Password Hashing
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# Password Hashing using direct bcrypt
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    try:
+        return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
+    except Exception:
+        return False
 
-def verify_password(plain_password, hashed_password):
-    return pwd_context.verify(plain_password, hashed_password)
-
-def get_password_hash(password):
-    return pwd_context.hash(password)
+def get_password_hash(password: str) -> str:
+    salt = bcrypt.gensalt()
+    return bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
 
 # JWT Token Creation
 def create_access_token(data: dict):
@@ -19,3 +21,12 @@ def create_access_token(data: dict):
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
     return encoded_jwt
+
+# Deterministic Task Metadata Generator
+import hashlib
+def get_task_metadata(task_text: str):
+    h = int(hashlib.md5(task_text.encode('utf-8')).hexdigest(), 16)
+    difficulty_options = ["Easy", "Medium", "Hard"]
+    difficulty = difficulty_options[h % 3]
+    estimated_hours = 1 + (h % 4)  # 1 to 4 hours
+    return difficulty, estimated_hours

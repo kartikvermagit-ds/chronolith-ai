@@ -97,7 +97,7 @@ class DatabaseWrapper:
         url = settings.SUPABASE_URL
         key = settings.SUPABASE_KEY
         
-        if not url or url == "YOUR_SUPABASE_URL" or not key or key == "YOUR_SUPABASE_ANON_KEY":
+        if getattr(settings, "USE_LOCAL_DB", False) or not url or url == "YOUR_SUPABASE_URL" or not key or key == "YOUR_SUPABASE_ANON_KEY":
             self.use_mock = True
             self.db_file = Path(__file__).resolve().parent / "db.json"
         else:
