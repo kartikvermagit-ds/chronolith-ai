@@ -15,6 +15,7 @@ origins = [
     "http://localhost:3000",
     "https://chronolith-ai.vercel.app",
     "https://chronolith-1f26hobg8-kartikvermagit-ds-projects.vercel.app",
+]
 
 app.add_middleware(
     CORSMiddleware,
