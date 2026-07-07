@@ -13,6 +13,7 @@ app = FastAPI(
 origins = [
     "http://localhost:5173",  # The default address for Vite dev server
     "http://localhost:3000",
+    "https://<https://chronolith-ai.vercel.app/>.vercel.app",
 ]
 
 app.add_middleware(
