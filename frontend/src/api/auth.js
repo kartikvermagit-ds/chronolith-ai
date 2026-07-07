@@ -1,4 +1,4 @@
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = 'https://chronolith-ai.onrender.com';
 
 export const signupUser = async (email, password) => {
   const response = await fetch(`${API_URL}/auth/signup`, {
