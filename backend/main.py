@@ -13,12 +13,12 @@ app = FastAPI(
 origins = [
     "http://localhost:5173",  # The default address for Vite dev server
     "http://localhost:3000",
-    "https://<https://chronolith-ai.vercel.app/>.vercel.app",
+    "https://chronolith-ai.vercel.app",
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -29,4 +29,6 @@ app.include_router(auth_router)
 
 @app.get("/")
 def read_root():
-    return {"status": "ok", "message": "Chronolith AI Backend is running!"}
+    return {"status": "ok",
+             "message": "Chronolith AI Backend is running!"
+    }
